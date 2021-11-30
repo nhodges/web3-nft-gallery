@@ -111,6 +111,8 @@ export default function Collection() {
                         </a>
                     )}
                 </div>
+
+                <a href={`/wallet/${token.owner}`}>VIEW OWNERS WALLET</a>
             </main>
 
             <footer className={styles.footer}>

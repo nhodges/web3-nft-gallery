@@ -124,7 +124,7 @@ export default function Collection() {
                 </p>
 
                 <div>
-                    <button onClick={() => { setStartIndex(startIndex + 3); }}>Next Page</button>
+                    <button className={styles.button} onClick={() => { setStartIndex(startIndex + 3); }}>Next Page</button>
                 </div>
 
                 <div key={startIndex} className={styles.grid}>

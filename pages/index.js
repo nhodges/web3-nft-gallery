@@ -137,7 +137,13 @@ export default function Home() {
       <main className={styles.main}>
         <Header />
 
-        <div>
+        <h3><a href="/collection/bored-ape-yacht-club">Bored Ape Yacht Club</a></h3>
+
+        <h3><a href="/collection/mutant-ape-yacht-club">Mutant Ape Yacht Club</a></h3>
+
+        <h3><a href="/collection/fidenza-by-tyler-hobbs">Fidenza</a></h3>
+
+        {/* <div>
           <button onClick={() => { setStartIndex(startIndex + 3); }}>Next Page</button>
         </div>
 
@@ -154,11 +160,10 @@ export default function Home() {
                     <div key={`${attribute.trait_type}`}>{attribute.trait_type}: {attribute.value}</div>
                   )
                 })}
-                {/* <p><pre>{JSON.stringify(node, 1, 2)}</pre></p> */}
               </a>
             )
           })}
-        </div>
+        </div> */}
       </main>
 
       <footer className={styles.footer}>

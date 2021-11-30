@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import Head from 'next/head'
 import Image from 'next/image'
 
+import Header from '../../lib/components/header'
 import styles from '../../styles/Home.module.css'
 
 import { ethers } from 'ethers'
@@ -31,7 +32,7 @@ export default function Collection() {
         })
 
         const responseJson = await httpResponse.json()
-
+console.log(responseJson.assets)
         setTokens(responseJson.assets)
 
     }, [])
@@ -52,10 +53,11 @@ export default function Collection() {
 
                 <div className={styles.grid}>
                     {tokens && tokens.map(node => {
+                        console.log(Node)
                         return (
                             <a key={node.token_id} href={`/collection/${node.asset_contract.address}`} className={styles.card}>
                                 <h2>{node.asset_contract.name} #{node.token_id} &rarr;</h2>
-                                <img src={node.image_original_url} />
+                                <img src={node.image_url} />
                                 {node.traits.length > 0 && node.traits.map(attribute => {
                                     return (
                                         <div key={`${attribute.trait_type}`}>{attribute.trait_type}: {attribute.value}</div>

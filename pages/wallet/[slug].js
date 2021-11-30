@@ -21,12 +21,11 @@ export default function Collection() {
         const slug = path[path.length-1]
         const api = `https://api.opensea.io/api/v1/assets?owner=${slug}`
 
-        let httpResponse = await fetch(api, {
-            method: 'GET',
+        let httpResponse = await fetch('/api/proxy', {
+            method: 'POST',
             headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'mode': 'cors'
+                'x-proxy-uri': api,
+                'x-proxy-method': 'GET'
             }
             // body: JSON.stringify({a: 1, b: 'Textual content'})
         })

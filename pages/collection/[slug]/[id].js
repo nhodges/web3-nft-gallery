@@ -2,10 +2,9 @@ import { useEffect, useState } from 'react';
 
 import Head from 'next/head'
 import Image from 'next/image'
+
 import Header from '../../../lib/components/header'
-
 import styles from '../../../styles/Home.module.css'
-
 import { FEATURED_COLLECTIONS } from '../../../lib/constants/collections';
 import { ABI_NFT } from '../../../lib/abi/nft';
 
@@ -23,8 +22,10 @@ export default function Collection() {
         const collectionAddress = FEATURED_COLLECTIONS[slug] || slug
 
         if (typeof window !== 'undefined') {
+
             let provider
             let signer
+            
             if (typeof window.ethereum !== 'undefined') {
                 window.ethereum.enable()
                 provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -40,12 +41,14 @@ export default function Collection() {
 
             const metadataUri = response.replace("ipfs://", "https://ipfs.io/ipfs/")
 
-            let httpResponse = await fetch(metadataUri, {
-                method: 'GET',
+            let httpResponse = await fetch('/api/proxy', {
+                method: 'POST',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'mode': 'cors'
+                    'mode': 'cors',
+                    'x-proxy-uri': metadataUri,
+                    'x-proxy-method': 'GET'
                 }
                 // body: JSON.stringify({a: 1, b: 'Textual content'})
             })

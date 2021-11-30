@@ -64,11 +64,11 @@ export default function Collection() {
     
                     const metadataUri = response.replace("ipfs://", "https://ipfs.io/ipfs/")
     
-                    let httpResponse = await fetch(metadataUri, {
-                        method: 'GET',
+                    let httpResponse = await fetch('/api/proxy', {
+                        method: 'POST',
                         headers: {
-                            'Accept': 'application/json',
-                            'Content-Type': 'application/json'
+                            'x-proxy-uri': metadataUri,
+                            'x-proxy-method': 'GET'
                         }
                         // body: JSON.stringify({a: 1, b: 'Textual content'})
                     })

@@ -137,11 +137,6 @@ export default function Home() {
       <main className={styles.main}>
         <Header />
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
         <div>
           <button onClick={() => { setStartIndex(startIndex + 3); }}>Next Page</button>
         </div>
